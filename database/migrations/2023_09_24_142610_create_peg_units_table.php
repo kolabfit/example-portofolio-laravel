@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('peg_units', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('pegawai_id');
-            $table->unsignedInteger('direktorats_id');
+            $table->foreignId('pegawai_id');
+            $table->foreignId('direktorats_id');
             $table->timestamps();
         });
     }

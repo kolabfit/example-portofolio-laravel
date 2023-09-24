@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('portofolios', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('kategori_id');
+            $table->foreignId('kategori_id')->nullable();
             $table->string('judul_porto');
             $table->integer('tahun');
             $table->text('deskripsi');

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('nohp');
             $table->string('alamat');
-            $table->unsignedInteger('porto_id');
+            $table->foreignId('porto_id')->nullable();
             $table->timestamps();
         });
     }
