@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PegawaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/pegawai', [PegawaiController::class, 'index'])->name('pegawai.index');
+Route::get('/pegawai/create', [PegawaiController::class, 'create'])->name('pegawai.create');
+Route::get('/pegawai/detail/{id}', [PegawaiController::class, 'show'])->name('pegawai.show');
+Route::get('/pegawai/edit/{id}', [PegawaiController::class, 'edit'])->name('pegawai.edit');
+
+Route::post('/pegawai/update/{id}', [PegawaiController::class, 'update'])->name('pegawai.update');
+Route::post('/pegawai/delete/{id}', [PegawaiController::class, 'destroy'])->name('pegawai.destroy');
+Route::post('/pegawai/store', [PegawaiController::class, 'store'])->name('pegawai.store');
