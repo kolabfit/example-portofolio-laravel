@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Kategoris;
+use App\Models\Kategori;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class KategorisTableSeeder extends Seeder
+class KategoriTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -24,7 +24,7 @@ class KategorisTableSeeder extends Seeder
         ];
 
         foreach ($kategoris as $kategori) {
-            Kategoris::create($kategori);
+            Kategori::create($kategori);
         }
     }
 }
