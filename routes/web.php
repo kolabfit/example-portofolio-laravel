@@ -18,11 +18,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/pegawai', [PegawaiController::class, 'index'])->name('pegawai.index');
-Route::get('/pegawai/create', [PegawaiController::class, 'create'])->name('pegawai.create');
-Route::get('/pegawai/detail/{id}', [PegawaiController::class, 'show'])->name('pegawai.show');
-Route::get('/pegawai/edit/{id}', [PegawaiController::class, 'edit'])->name('pegawai.edit');
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-Route::post('/pegawai/update/{id}', [PegawaiController::class, 'update'])->name('pegawai.update');
-Route::post('/pegawai/delete/{id}', [PegawaiController::class, 'destroy'])->name('pegawai.destroy');
-Route::post('/pegawai/store', [PegawaiController::class, 'store'])->name('pegawai.store');
+    Route::get('/pegawai', [PegawaiController::class, 'index'])->name('pegawai.index');
+    Route::get('/pegawai/create', [PegawaiController::class, 'create'])->name('pegawai.create');
+    Route::get('/pegawai/detail/{id}', [PegawaiController::class, 'show'])->name('pegawai.show');
+    Route::get('/pegawai/edit/{id}', [PegawaiController::class, 'edit'])->name('pegawai.edit');
+
+    Route::post('/pegawai/update/{id}', [PegawaiController::class, 'update'])->name('pegawai.update');
+    Route::post('/pegawai/delete/{id}', [PegawaiController::class, 'destroy'])->name('pegawai.destroy');
+    Route::post('/pegawai/store', [PegawaiController::class, 'store'])->name('pegawai.store');
+});
