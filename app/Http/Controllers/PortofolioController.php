@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pegawai;
+use App\Models\Kategori;
 use App\Models\Portofolio;
 use Illuminate\Http\Request;
 
-class PegawaiController extends Controller
+class PortofolioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class PegawaiController extends Controller
      */
     public function index()
     {
-        $pegawais = Pegawai::all();
+        $portofolios = Portofolio::all();
 
-        return view('pegawai.index', compact('pegawais'));
+        return view('portofolio.index', compact('portofolios'));
     }
 
     /**
@@ -27,8 +27,8 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        $portofolios = Portofolio::all();
-        return view('pegawai.create', compact('portofolios'));
+        $kategories = Kategori::all();
+        return view('portofolio.create', compact('kategories'));
     }
 
     /**
@@ -39,11 +39,11 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        $pegawai = new Pegawai();
-        $pegawai->fill($request->all());
-        $pegawai->save();
+        $portofolio = new Portofolio();
+        $portofolio->fill($request->all());
+        $portofolio->save();
 
-        return redirect()->route('pegawai.index');
+        return redirect()->route('portofolio.index');
     }
 
     /**
@@ -54,9 +54,9 @@ class PegawaiController extends Controller
      */
     public function show($id)
     {
-        $pegawai = Pegawai::find($id);
+        $portofolio = Portofolio::find($id);
 
-        return view('pegawai.show', compact('pegawai'));
+        return view('portofolio.show', compact('portofolio'));
     }
 
     /**
@@ -67,10 +67,10 @@ class PegawaiController extends Controller
      */
     public function edit($id)
     {
-        $pegawai = Pegawai::find($id);
-        $portofolios = Portofolio::all();
+        $portofolio = Portofolio::find($id);
+        $kategories = Kategori::all();
 
-        return view('pegawai.edit', compact('pegawai', 'portofolios'));
+        return view('portofolio.edit', compact('portofolio', 'kategories'));
     }
 
     /**
@@ -82,11 +82,11 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pegawai = Pegawai::find($id);
-        $pegawai->fill($request->all());
-        $pegawai->save();
+        $portofolio = Portofolio::find($id);
+        $portofolio->fill($request->all());
+        $portofolio->save();
 
-        return redirect()->route('pegawai.index');
+        return redirect()->route('portofolio.index');
     }
 
     /**
@@ -97,9 +97,9 @@ class PegawaiController extends Controller
      */
     public function destroy($id)
     {
-        $pegawai = Pegawai::find($id);
-        $pegawai->delete();
+        $portofolio = Portofolio::find($id);
+        $portofolio->delete();
 
-        return redirect()->route('pegawai.index');
+        return redirect()->route('portofolio.index');
     }
 }

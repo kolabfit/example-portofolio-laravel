@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\PortofolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+    // Route Pegawai
     Route::get('/pegawai', [PegawaiController::class, 'index'])->name('pegawai.index');
     Route::get('/pegawai/create', [PegawaiController::class, 'create'])->name('pegawai.create');
     Route::get('/pegawai/detail/{id}', [PegawaiController::class, 'show'])->name('pegawai.show');
@@ -35,4 +37,14 @@ Route::middleware([
     Route::post('/pegawai/update/{id}', [PegawaiController::class, 'update'])->name('pegawai.update');
     Route::post('/pegawai/delete/{id}', [PegawaiController::class, 'destroy'])->name('pegawai.destroy');
     Route::post('/pegawai/store', [PegawaiController::class, 'store'])->name('pegawai.store');
+
+    // Route Portofolio
+    Route::get('/portofolio', [PortofolioController::class, 'index'])->name('portofolio.index');
+    Route::get('/portofolio/create', [PortofolioController::class, 'create'])->name('portofolio.create');
+    Route::get('/portofolio/detail/{id}', [PortofolioController::class, 'show'])->name('portofolio.show');
+    Route::get('/portofolio/edit/{id}', [PortofolioController::class, 'edit'])->name('portofolio.edit');
+
+    Route::post('/portofolio/update/{id}', [PortofolioController::class, 'update'])->name('portofolio.update');
+    Route::post('/portofolio/delete/{id}', [PortofolioController::class, 'destroy'])->name('portofolio.destroy');
+    Route::post('/portofolio/store', [PortofolioController::class, 'store'])->name('portofolio.store');
 });

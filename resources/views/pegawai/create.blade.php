@@ -1,24 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pegawais</title>
-</head>
-<body>
-    <h1>Tambah Pegawai</h1>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Tambah Pegawai') }}
+        </h2>
+    </x-slot>
 
-    <form action="{{ route('pegawai.store') }}" method="post">
-        @csrf
-
-        <input type="text" name="nip" placeholder="NIP">
-        <input type="text" name="nama" placeholder="Nama">
-        <input type="number" name="nohp" placeholder="Nomor HP">
-        <input type="text" name="alamat" placeholder="Alamat">
-
-        <button type="submit">Simpan</button>
-    </form>
-
-    <a href="{{ route('pegawai.index') }}">Kembali ke daftar pegawai</a>
-</body>
-</html>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <form action="{{ route('pegawai.store') }}" method="post" class="flex flex-col">
+                    @csrf
+            
+                    <input type="text" name="nip" placeholder="NIP" class="mb-2">
+                    <input type="text" name="nama" placeholder="Nama" class="mb-2">
+                    <input type="number" name="nohp" placeholder="Nomor HP" class="mb-2">
+                    <input type="text" name="alamat" placeholder="Alamat" class="mb-2">
+                    <select name="porto_id">
+                        <option value="">Pilih Portofolio</option>
+                        @foreach ($portofolios as $portofolio)
+                        <option value="{{ $portofolio->id }}">{{ $portofolio->judul_porto }}</option>
+                        @endforeach
+                    </select>
+            
+                    <button type="submit" class="mb-2">Simpan</button>
+                </form>
+            
+                <a href="{{ route('pegawai.index') }}" class="justify-between">Kembali ke daftar pegawai</a>
+            </div>
+        </div>
+    </div>
+</x-app-layout>

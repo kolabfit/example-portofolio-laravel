@@ -19,6 +19,10 @@
                     <x-nav-link href="{{ route('pegawai.index') }}" :active="request()->routeIs('pegawai.index')">
                         {{ __('Pegawai') }}
                     </x-nav-link>
+
+                    <x-nav-link href="{{ route('portofolio.index') }}" :active="request()->routeIs('portofolio.index')">
+                        {{ __('Portofolio') }}
+                    </x-nav-link>
                 </div>
             </div>
 

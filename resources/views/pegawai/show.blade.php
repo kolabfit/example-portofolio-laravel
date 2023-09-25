@@ -1,19 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pegawais</title>
-</head>
-<body>
-    <h1>Pegawai</h1>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Detail Pegawai') }}
+        </h2>
+    </x-slot>
 
-    <p>NIP: {{ $pegawai->nip }}</p>
-    <p>Nama: {{ $pegawai->nama }}</p>
-    <p>Nomor HP: {{ $pegawai->nohp }}</p>
-    <p>Alamat: {{ $pegawai->alamat }}</p>
-    <p>Portofolio: {{ $pegawai->portofolio->judul_porto }}</p>
-
-    <a href="{{ route('pegawai.index') }}">Kembali ke daftar pegawai</a>
-</body>
-</html>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <p class="text-lg mb-2">NIP: {{ $pegawai->nip }}</p>
+                <p class="text-lg mb-2">Nama: {{ $pegawai->nama }}</p>
+                <p class="text-lg mb-2">Nomor HP: {{ $pegawai->nohp }}</p>
+                <p class="text-lg mb-2">Alamat: {{ $pegawai->alamat }}</p>
+                <p class="text-lg mb-2 border-t-2 border-gray-200">Portofolio: {{ $pegawai->portofolio->judul_porto }}</p>
+            
+                <a href="{{ route('pegawai.index') }}">Kembali ke daftar pegawai</a>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
